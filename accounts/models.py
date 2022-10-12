@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Legal(models.Model):
+class LegalProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     legal_representative_first_name = models.CharField(max_length=200)
@@ -11,7 +11,7 @@ class Legal(models.Model):
     def __str__(self):
         return self.name
 
-class Natural(models.Model):
+class NaturalProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
