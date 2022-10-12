@@ -10,6 +10,8 @@ Hi Mom!
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log in</a>
+  or
+  <a href="{% url 'signup' %}">Sign up</a>
 {% endif %}
 
 {% endblock %}
