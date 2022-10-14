@@ -18,9 +18,7 @@ class Subscription(models.Model):
     fund = models.ForeignKey(Fund, on_delete=models.PROTECT)
 
     def __str__(self):
-        full_name = f'{self.profile.user.first_name} {self.profile.user.last_name}'.strip()
-
-        return full_name or self.profile.user.username
+        return self.profile.__str__()
 
     class Meta:
         verbose_name = _('subscription')
