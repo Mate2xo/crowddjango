@@ -1,0 +1,52 @@
+# Project-wide translations
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-17 15:47+0200\n"
+"PO-Revision-Date: 2022-10-17\n"
+"Last-Translator: tim\n"
+"Language-Team: teamteam <team@team.ord>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: mysite/settings.py:119
+msgid "English"
+msgstr "Anglais"
+
+#: mysite/settings.py:120
+msgid "French"
+msgstr "Français"
+
+#: mysite/templates/home.html:4
+msgid "Hello world"
+msgstr "Bonjour monde 💩"
+
+#: mysite/templates/home.html:7
+msgid "Hi Mom!"
+msgstr "Salut mman"
+
+#: mysite/templates/home.html:9
+msgid "You're logged in"
+msgstr "Vous êtes connecté"
+
+#: mysite/templates/home.html:10
+msgid "Log out"
+msgstr "Se déconnecter"
+
+#: mysite/templates/home.html:12
+msgid "You are not logged in"
+msgstr "Vous n'êtes pas connecté"
+
+#: mysite/templates/home.html:13
+msgid "Log in"
+msgstr "Se connecter"
+
+#: mysite/templates/home.html:15
+msgid "Sign up"
+msgstr "Inscription"

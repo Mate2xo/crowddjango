@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# /?\ Middlewares order matters
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # MUST between session and common. @see https://docs.djangoproject.com/en/4.1/topics/i18n/translation/#how-django-discovers-language-preference
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -111,13 +113,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
+from django.utils.translation import gettext_lazy as _
 
 LANGUAGE_CODE = 'FR-fr'
-
+LANGUAGES = [
+    ('en', _('English')),
+    ('fr', _('French'))
+]
+LOCALE_PATHS = [
+    BASE_DIR / 'mysite' / 'locale',
+]
 TIME_ZONE = 'Europe/Paris'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
