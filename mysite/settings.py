@@ -38,7 +38,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'profiles.apps.ProfilesConfig',
+    'accounts.apps.AccountsConfig',
+    'investments.apps.InvestmentsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,9 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# /?\ Middlewares order matters
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # MUST between session and common. @see https://docs.djangoproject.com/en/4.1/topics/i18n/translation/#how-django-discovers-language-preference
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,7 +65,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'mysite' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,13 +113,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
+from django.utils.translation import gettext_lazy as _
 
 LANGUAGE_CODE = 'FR-fr'
-
+LANGUAGES = [
+    ('en', _('English')),
+    ('fr', _('French'))
+]
+LOCALE_PATHS = [
+    BASE_DIR / 'mysite' / 'locale',
+]
 TIME_ZONE = 'Europe/Paris'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -129,3 +137,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'accounts:profile_show'
+LOGOUT_REDIRECT_URL = 'home'

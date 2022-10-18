@@ -1,0 +1,47 @@
+# User accounts translations
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-17 14:49+0200\n"
+"PO-Revision-Date: 2022-10-17\n"
+"Last-Translator: tim\n"
+"Language-Team: teamteam <team@team.ord>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/templates/registration/login.html:4
+msgid "Login"
+msgstr "Connection"
+
+#: accounts/templates/registration/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Vos nom d'utilisateur et mot de passe ne correspondent pas. Réessayez svp"
+
+#: accounts/templates/registration/login.html:14
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
+msgstr ""
+"Votre compte ne dispose des droits pour accéder à cette page. Connectez-vous "
+"avec un compte approprié pour y accéder"
+
+#: accounts/templates/registration/login.html:20
+msgid "Please login to see this page."
+msgstr "Veuillez vous connecter pour accéder à cette page"
+
+#: accounts/templates/registration/login.html:41
+msgid "Lost password?"
+msgstr "Mot de passe perdu ?"
+
+#: accounts/templates/registration/signup.html:3
+#: accounts/templates/registration/signup.html:6
+#: accounts/templates/registration/signup.html:10
+msgid "Sign Up"
+msgstr "Inscription"
