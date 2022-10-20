@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-17 14:49+0200\n"
+"POT-Creation-Date: 2022-10-19 18:39+0200\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -14,6 +14,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/apps.py:7
+msgid "accounts"
+msgstr "comptes utilisateur"
+
+#. Translators: On the sign-up form, the user must choose if their account is made on behalf of a company, or for a real person
+#: accounts/forms.py:10 accounts/models.py:23
+msgid "legal entity"
+msgstr "personne morale"
+
+#: accounts/forms.py:10 accounts/models.py:33
+msgid "natural person"
+msgstr "personne physique"
+
+#: accounts/models.py:11
+msgid "profile"
+msgstr "profil"
+
+#: accounts/models.py:12
+msgid "profiles"
+msgstr "profils"
+
+#: accounts/models.py:24
+msgid "legal entities"
+msgstr "personnes morales"
+
+#: accounts/models.py:34
+msgid "natural persons"
+msgstr "personnes physiques"
 
 #: accounts/templates/registration/login.html:4
 msgid "Login"

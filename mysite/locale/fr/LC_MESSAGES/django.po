@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-17 15:47+0200\n"
+"POT-Creation-Date: 2022-10-19 18:32+0200\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: mysite/settings.py:119
+#: mysite/settings.py:121
 msgid "English"
 msgstr "Anglais"
 
-#: mysite/settings.py:120
+#: mysite/settings.py:122
 msgid "French"
 msgstr "Français"
 

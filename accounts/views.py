@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic
-from .models import LegalProfile, NaturalProfile
+from .models import Legal, Natural
 from .forms import SignUpForm
 
 @login_required()
@@ -24,6 +24,6 @@ def signup(request):
 def associate_user_and_profile(user, form):
     profile_type = form.cleaned_data['profile_type']
     if profile_type == 'Legal':
-        LegalProfile(user=user).save()
+        Legal(user=user).save()
     elif profile_type == 'Natural':
-        NaturalProfile(user=user).save()
+        Natural(user=user).save()

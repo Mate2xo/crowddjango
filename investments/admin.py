@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Fund
+from .models import Fund, Subscription
 
-admin.site.register(Fund)
+admin.site.register([Fund, Subscription])
