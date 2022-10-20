@@ -18,7 +18,7 @@ class Subscription(models.Model):
     fund = models.ForeignKey(Fund, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.profile.__str__()
+        return self.profile.get_real_instance().__str__()
 
     class Meta:
         verbose_name = _('subscription')

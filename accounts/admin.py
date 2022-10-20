@@ -4,21 +4,26 @@ from django.contrib.auth.models import User
 
 from polymorphic.admin import (
     PolymorphicChildModelAdmin,
+    PolymorphicParentModelAdmin,
     PolymorphicInlineSupportMixin,
     StackedPolymorphicInline
 )
 
 from .models import Legal, Natural, Profile
 
+@admin.register(Profile)
+class ProfileParentAdmin(PolymorphicParentModelAdmin):
+    base_model = Profile
+    child_models = (Legal, Natural)
+    polymorphic_list = True
+
 @admin.register(Natural)
 class LegalAdmin(PolymorphicChildModelAdmin):
     base_model = Legal
-    show_in_index = True
 
 @admin.register(Legal)
 class NaturalAdmin(PolymorphicChildModelAdmin):
     base_model = Natural
-    show_in_index = True
 
 class ProfileInline(StackedPolymorphicInline):
     class LegalProfileInline(StackedPolymorphicInline.Child):
