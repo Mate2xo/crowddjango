@@ -17,7 +17,7 @@ class Legal(Profile):
     legal_representative_last_name = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name or f'{self.user.first_name} {self.user.last_name}'
+        return self.name or f'{self.user.first_name} {self.user.last_name}'.strip()
 
     class Meta:
         verbose_name = _('legal entity')
@@ -27,7 +27,7 @@ class Natural(Profile):
     place_of_birth = models.CharField(max_length=200)
 
     def __str__(self):
-        return f'{self.user.first_name} {self.user.last_name}'
+        return f'{self.user.first_name} {self.user.last_name}'.strip()
 
     class Meta:
         verbose_name = _('natural person')
