@@ -1,4 +1,0 @@
--r requirements.txt
--r requirements_tests.txt
-
-pre-commit~=2.20.0
