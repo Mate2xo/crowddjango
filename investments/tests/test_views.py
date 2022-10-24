@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
-from .models import Fund, Subscription
+from investments.models import Fund, Subscription
 from accounts.models import Legal, Natural
 
 def create_subscription(username='patate', fundname='friteuse', companyname='Hocouteau no Ken'):
@@ -12,13 +12,7 @@ def create_subscription(username='patate', fundname='friteuse', companyname='Hoc
     fund = Fund.objects.create(name=fundname)
     return Subscription.objects.create(amount=1234, profile=profile, fund=fund)
 
-class SubscriptionModelTests(TestCase):
-    def test_subscription_display_is_the_legal_profile_name(self):
-        subscription = create_subscription()
-
-        self.assertEqual(repr(subscription), f'<Subscription: {subscription.profile.name}>')
-
-class SubscriptionViewTests(TestCase):
+class SubscriptionListTests(TestCase):
     def test_index_requires_login(self):
         response = self.client.get(reverse('investments:dashboard'))
 
@@ -42,6 +36,7 @@ class SubscriptionViewTests(TestCase):
 
         self.assertContains(response, _('You have not subscribed to any fund'))
 
+class SubscriptionViewTests(TestCase):
     def test_show_requires_login(self):
         response = self.client.get(reverse('investments:subscription_detail', args=[999]))
 
