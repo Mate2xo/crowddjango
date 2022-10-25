@@ -3,6 +3,8 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from accounts.tests.factories.users import UserFactory
+
 class LoginFeatureTest(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
@@ -15,10 +17,10 @@ class LoginFeatureTest(LiveServerTestCase):
         super().tearDownClass()
 
     def test_login_with_valid_params(self):
-        User.objects.create_user(username='marcodu93', password='passpass')
+        user = UserFactory()
 
         self.browser.get(f'{self.live_server_url}/accounts/login/')
-        self.browser.find_element(By.ID, 'id_username').send_keys('marcodu93')
+        self.browser.find_element(By.ID, 'id_username').send_keys(user.username)
         self.browser.find_element(By.ID, 'id_password').send_keys('passpass')
         self.browser.find_element(By.ID, 'id_submit').click()
 

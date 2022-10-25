@@ -11,5 +11,6 @@ repos:
     -   id: end-of-file-fixer
     -   id: name-tests-test
         args: [--django]
+        exclude: ^.*/tests/factories/
     -   id: requirements-txt-fixer
     -   id: trailing-whitespace

@@ -13,6 +13,7 @@ psycopg2-binary = "~=2.9.4"
 coverage = "~=6.5.0"
 selenium = "~=4.5.0"
 pre-commit = "~=2.20.0"
+factory-boy = "*"
 
 [requires]
 python_version = "3.10"

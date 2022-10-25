@@ -5,7 +5,7 @@ from polymorphic.models import PolymorphicModel
 
 class Profile(PolymorphicModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
-    phone_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=30)
 
     class Meta:
         verbose_name = _('profile')
