@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n bootstrap5 %}
 
 {% block title %} {% translate 'Login' %} {% endblock %}
 {% block content %}
@@ -23,19 +23,14 @@
 
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}
-  <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label_tag }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-  </table>
-
-  <input id="id_submit" type="submit" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
+  <div class="w-25 m-auto">
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    {% endbuttons %}
+  </div>
 </form>
 
 <p><a href="{% url 'password_reset' %}">{% translate 'Lost password?' %}</a></p>

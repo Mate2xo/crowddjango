@@ -1,0 +1,47 @@
+{% load i18n %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CrowdDjango</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          {# Translators: Navbar #}
+          <a class="nav-link active" aria-current="page" href="#">{% translate "Home" %}</a>
+        </li>
+        <li class="nav-item">
+          {# Translators: Navbar #}
+          <a class="nav-link" href="#">{% translate "Funds" %}</a>
+        </li>
+        <li class="nav-item">
+          {# Translators: Navbar #}
+          <a class="nav-link" href="#">{% translate "Dashboard" %}</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {# Translators: Navbar #}
+              {% translate "Profile" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="{% url "logout" %}">
+                  {# Translators: Navbar #}
+                  {% translate "Log out" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+        {% else %}
+          <a href="{% url 'login' %}">{% translate "Log in" %}</a>
+          /
+          <a href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-21 13:20+0200\n"
+"POT-Creation-Date: 2022-10-27 17:46+0200\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -46,5 +46,6 @@ msgid "Your Subscriptions"
 msgstr "Vos souscriptions"
 
 #: investments/templates/investments/subscription_list.html:22
+#: investments/tests/test_views.py:30
 msgid "You have not subscribed to any fund"
 msgstr "Vous n'avez souscrit à aucun fonds"

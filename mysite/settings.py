@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'bootstrap5',
     'investments.apps.InvestmentsConfig',
     'polymorphic',
     'django.contrib.admin',
