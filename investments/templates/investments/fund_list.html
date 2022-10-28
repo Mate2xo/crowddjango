@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{# Translators: Browser title for the subscriptions dashboard page #}
+{% block title %}{% translate "Funds" %}{% endblock %}
+
+{% block content %}
+
+<h1>{% translate "Funds open to investment" %}</h1>
+
+{% if object_list %}
+  <ul>
+    {% for fund in fund_list %}
+    <li>
+      <a href='{% url 'investments:fund_detail' fund.id %}'>
+        {{fund.name}}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+{% translate "There is currently no fund open to investment" %}
+{% endif %}
+
+{% endblock %}
