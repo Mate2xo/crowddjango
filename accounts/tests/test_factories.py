@@ -3,6 +3,7 @@ from django.test import TestCase
 from accounts.tests.factories.users import UserFactory
 from accounts.tests.factories.profiles import LegalFactory, NaturalFactory
 
+
 class FactoryTests(TestCase):
     def test_base_user_is_valid(self):
         user = UserFactory.build()
