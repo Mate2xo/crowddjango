@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'djmoney',
     'bootstrap5',
     'investments.apps.InvestmentsConfig',
     'polymorphic',

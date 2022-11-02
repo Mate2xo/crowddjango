@@ -1,10 +1,10 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from accounts.tests.factories.users import UserFactory
 from investments.tests.factories.subscriptions import SubscriptionFactory
+
 
 class SubscriptionListTests(TestCase):
     def test_index_requires_login(self):
@@ -28,6 +28,7 @@ class SubscriptionListTests(TestCase):
         response = self.client.get(reverse('investments:dashboard'))
 
         self.assertContains(response, _('You have not subscribed to any fund'))
+
 
 class SubscriptionViewTests(TestCase):
     def test_show_requires_login(self):
