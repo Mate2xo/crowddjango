@@ -1,0 +1,15 @@
+[report]
+# The test coverage you require.
+fail_under = 100
+
+exclude_lines =
+  # Make it possible to ignore blocks of code
+  pragma: no cover
+  # Generally only debug code uses this
+  def __repr__
+
+
+[run]
+branch = True
+omit = mysite/asgi.py
+       mysite/wsgi.py
