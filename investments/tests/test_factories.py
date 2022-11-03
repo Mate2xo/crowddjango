@@ -1,4 +1,4 @@
-from django.test import TestCase
+import factory
 import pytest
 
 from investments.models import Subscription
@@ -10,22 +10,16 @@ def test_base_fund_is_valid():
     fund = FundFactory.build()
     assert fund.clean_fields() is None
 
-# TODO: try to iterate on traits
-def test_closable_fund_is_valid():
-    fund = FundFactory.build(closable=True)
-    assert fund.clean_fields() is None
 
-def test_closed_fund_is_valid():
-    fund = FundFactory.build(closed=True)
-    assert fund.clean_fields() is None
+fund_params = FundFactory.__dict__['_meta'].parameters
+fund_traits = {key: value for key, value in fund_params.items() if type(value) == factory.declarations.Trait}
 
-def test_publishable_fund_is_valid():
-    fund = FundFactory.build(publishable=True)
-    assert fund.clean_fields() is None
 
-def test_published_fund_is_valid():
-    fund = FundFactory.build(published=True)
-    assert fund.clean_fields() is None
+@pytest.mark.parametrize('trait', fund_traits.keys())
+@pytest.mark.django_db
+def test_fund_traits_are_valid(trait):
+    fund = FundFactory.build(**{trait: True})
+    assert fund.full_clean() is None
 
 
 @pytest.mark.django_db
