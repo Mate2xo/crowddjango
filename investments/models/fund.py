@@ -25,9 +25,7 @@ class Fund(models.Model):
     status = FSMField(default=Status.BEING_CREATED, choices=Status.choices)
 
     def can_publish(self):
-        if self.closing_date is None:
-            return False
-        if self.goal is None:
+        if self.closing_date is None or self.goal is None:
             return False
         return True
 
@@ -42,30 +40,25 @@ class Fund(models.Model):
     def close(self):
         pass
 
-    # try to use transitions methods to manage validations
     def clean(self):
-        self.__validate_required_fields_for_status(self.status)
+        self.__validate_required_fields_for_status()
 
     def __str__(self):
         return self.name
 
-    # TODO: use `django-fsm` to manage status transitions
-    def __validate_required_fields_for_status(self, status=None):
-        if status is None:
-            status = self.status
-
-        if status == self.Status.PUBLISHED:
+    def __validate_required_fields_for_status(self):
+        if self.status == self.Status.PUBLISHED:
             if self.closing_date is None and self.goal is None:
                 raise ValidationError({
-                    'closing_date': ValidationError(_('Closing date field is missing'), code='required'),
-                    'goal': ValidationError(_('Goal field is missing'), code='required')
+                    'closing_date': ValidationError(_('Closing date field is required'), code='required'),
+                    'goal': ValidationError(_('Goal field is required'), code='required')
                 })
             if self.closing_date is None:
                 # Translators: error feedback if this field is missing when trying to save it
-                raise ValidationError(_('Closing date field is missing'), code='required')
+                raise ValidationError(_('Closing date field is required'), code='required')
             if self.goal is None:
-                raise ValidationError(_('Goal field is missing'), code='required')
-        if status == self.Status.CLOSED:
+                raise ValidationError(_('Goal field is required'), code='required')
+        if self.status == self.Status.CLOSED:
             if self.closing_date >= date.today():
                 raise ValidationError(_('Closing date has not expired yet'))
 

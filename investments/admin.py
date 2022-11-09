@@ -1,17 +1,10 @@
 from django.contrib import admin
-from django.contrib.admin.options import forms
 from django.shortcuts import Http404, redirect
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 from django_fsm import can_proceed
 
 from .models import Fund, Subscription
-
-
-class FundAdminForm(forms.ModelForm):
-    class Meta:
-        model = Fund
-        fields = ['status', 'goal', 'closing_date', 'name']
 
 
 class FundAdmin(admin.ModelAdmin):
@@ -34,7 +27,7 @@ class FundAdmin(admin.ModelAdmin):
         fund_to_publish = Fund.objects.get(id=pk)
         if not can_proceed(fund_to_publish.publish):
             fund_to_publish.status = Fund.Status.PUBLISHED
-            adminform = self.__validate_and_prerender_form(request, fund_to_publish)
+            adminform = self.__rebuild_form(request, fund_to_publish)
             response = self.change_view(request, str(pk))
             response.context_data['adminform'] = adminform
             return response
@@ -45,8 +38,8 @@ class FundAdmin(admin.ModelAdmin):
         self.message_user(request, _('This fund is now published'))
         return redirect('admin:investments_fund_changelist')
 
-    def __validate_and_prerender_form(self, request, fund):
-        form = FundAdminForm(data=fund.__dict__, instance=fund)
+    def __rebuild_form(self, request, fund):
+        form = self.get_form(request, fund)(data=fund.__dict__, instance=fund)
         return admin.helpers.AdminForm(form,
                                        self.get_fieldsets(request, fund),
                                        self.get_prepopulated_fields(request, fund),
