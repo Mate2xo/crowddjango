@@ -1,0 +1,25 @@
+{% load i18n admin_urls %}
+{% block object-tools-items %}
+<li>
+  <form id='publish_form'
+        action="{% url opts|admin_urlname:'publish' original.pk %}"
+        method="POST">
+    {% csrf_token %}
+    <a onclick="document.getElementById('publish_form').submit();">
+      {# Translators: Action button in the admin Fund edit view #}
+      {% translate "Publish" %}
+    </a>
+  </form>
+</li>
+<li>
+  {# Translators: Action button in the admin Fund edit view #}
+  <a href="" class="viewlink">{% translate "Close fund" %}</a>
+</li>
+<li>
+  {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+  <a href="{% add_preserved_filters history_url %}" class="historylink">
+    {% translate "History" %}
+  </a>
+</li>
+{% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% translate "View on site" %}</a></li>{% endif %}
+{% endblock %}
