@@ -36,7 +36,12 @@ class Fund(models.Model):
     def publish(self):
         pass
 
-    @transition(field=status, source=Status.PUBLISHED, target=Status.CLOSED)
+    def can_close(self):
+        if self.closing_date <= date.today():
+            return True
+        return False
+
+    @transition(field=status, source=Status.PUBLISHED, target=Status.CLOSED, conditions=[can_close])
     def close(self):
         pass
 
@@ -60,7 +65,7 @@ class Fund(models.Model):
                 raise ValidationError({'goal': _('Goal field is required')}, code='required')
         if self.status == self.Status.CLOSED:
             if self.closing_date >= date.today():
-                raise ValidationError(_('Closing date has not expired yet'))
+                raise ValidationError({'closing_date': _('Closing date has not expired yet')})
 
     class Meta:
         verbose_name = _('fund')

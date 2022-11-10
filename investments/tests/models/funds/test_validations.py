@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django_fsm import TransitionNotAllowed
@@ -33,15 +33,19 @@ class TestWhenTransitionningToClosed:
         assert _closable_fund.status == Fund.Status.CLOSED
 
     @pytest.mark.django_db
-    def xtest_closing_date_expiration_presence(self, _closable_fund):
-        # _closable_fund.status = Fund.Status.CLOSED
-        _closable_fund.closing_date = date.today()
-        _closable_fund.close()
-        assert _closable_fund.status != Fund.Status.CLOSED
-        # with pytest.raises(ValidationError) as exception_info:
-        #     _closable_fund.full_clean()
+    def test_no_transition_without_closing_date_expiration(self, _closable_fund):
+        _closable_fund.closing_date = date.today() + timedelta(days=1)
+        with pytest.raises(TransitionNotAllowed):
+            _closable_fund.close()
 
-        # assert _('Closing date has not expired yet') in exception_info.value.messages
+    @pytest.mark.django_db
+    def test_closing_date_validation(self, _closable_fund):
+        _closable_fund.status = Fund.Status.CLOSED
+        _closable_fund.closing_date = date.today() + timedelta(days=1)
+        with pytest.raises(ValidationError) as exception_info:
+            _closable_fund.full_clean()
+
+        assert _('Closing date has not expired yet') in exception_info.value.messages
 
     def test_fund_must_be_published(self, _closable_fund):
         _closable_fund.status = Fund.Status.BEING_CREATED

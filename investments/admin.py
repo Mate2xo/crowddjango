@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import messages
-from django.shortcuts import Http404, redirect, reverse
+from django.shortcuts import Http404, get_object_or_404, redirect, reverse
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 from django_fsm import can_proceed
@@ -16,20 +16,37 @@ class FundAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         base_urls = super().get_urls()
+        close_url = path('<int:pk>/close',
+                         self.admin_site.admin_view(self.close),
+                         name=f'{self.opts.app_label}_{self.opts.model_name}_close')
         publisher_url = path('<int:pk>/publish',
                              self.admin_site.admin_view(self.publish),
                              name=f'{self.opts.app_label}_{self.opts.model_name}_publish')
-        return [publisher_url] + base_urls
+        return [close_url, publisher_url] + base_urls
+
+    def close(self, request, pk):
+        if request.method != 'POST':
+            raise Http404()
+
+        fund_to_close = get_object_or_404(Fund, id=pk)
+        if not can_proceed(fund_to_close.close):
+            self.__give_status_validation_feedback(request, fund_to_close, Fund.Status.CLOSED)
+            return redirect(reverse('admin:investments_fund_change', args=[pk]))
+
+        fund_to_close.close()
+        fund_to_close.save()
+        # Translators: successful feedback from admin fund close action
+        self.message_user(request, _('This fund is now closed'))
+
+        return redirect('admin:investments_fund_changelist')
 
     def publish(self, request, pk):
         if request.method != 'POST':
             raise Http404()
 
-        fund_to_publish = Fund.objects.get(id=pk)
+        fund_to_publish = get_object_or_404(Fund, id=pk)
         if not can_proceed(fund_to_publish.publish):
-            self.__give_status_validation_feedback(request,
-                                                   fund_to_publish,
-                                                   status=Fund.Status.PUBLISHED)
+            self.__give_status_validation_feedback(request, fund_to_publish, Fund.Status.PUBLISHED)
             return redirect(reverse('admin:investments_fund_change', args=[pk]))
 
         fund_to_publish.publish()
