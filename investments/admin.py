@@ -35,7 +35,6 @@ class FundAdmin(admin.ModelAdmin):
 
         fund_to_close.close()
         fund_to_close.save()
-        # Translators: successful feedback from admin fund close action
         self.message_user(request, _('This fund is now closed'))
 
         return redirect('admin:investments_fund_changelist')
@@ -51,7 +50,6 @@ class FundAdmin(admin.ModelAdmin):
 
         fund_to_publish.publish()
         fund_to_publish.save()
-        # Translators: successful feedback from admin fund publishing action
         self.message_user(request, _('This fund is now published'))
         return redirect('admin:investments_fund_changelist')
 

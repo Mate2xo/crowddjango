@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 17:46+0200\n"
+"POT-Creation-Date: 2022-11-10 16:37+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -15,25 +15,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: investments/admin.py:38
+msgid "This fund is now closed"
+msgstr "Ce fonds est désormais cloturé"
+
+#: investments/admin.py:53
+msgid "This fund is now published"
+msgstr "Ce fonds est maintenant publié"
+
 #: investments/apps.py:7
 msgid "investments"
 msgstr "investissements"
 
-#: investments/models.py:12
+#: investments/models/fund.py:13
+msgid "Being created"
+msgstr "En cours de création"
+
+#: investments/models/fund.py:14
+msgid "Published"
+msgstr "Publié"
+
+#: investments/models/fund.py:15
+msgctxt "Fund Status. E.g.: \"This fund is now closed\""
+msgid "Closed"
+msgstr "Cloturé"
+
+#: investments/models/fund.py:17
+msgid "Fund name"
+msgstr "Nom du fonds"
+
+#: investments/models/fund.py:18
+msgctxt "Bring a fund to a close"
+msgid "Closing date"
+msgstr "Date de clôture"
+
+#: investments/models/fund.py:21
+msgid "Goal"
+msgstr "Objectif"
+
+#: investments/models/fund.py:60 investments/models/fund.py:68
+#: investments/tests/models/funds/test_validations.py:86
+#: investments/tests/models/funds/test_validations.py:108
+msgctxt "Bring a fund to a close"
+msgid "Closing date field is required"
+msgstr "La date de cloture est requise"
+
+#: investments/models/fund.py:63 investments/models/fund.py:72
+#: investments/tests/models/funds/test_validations.py:96
+#: investments/tests/models/funds/test_validations.py:109
+msgid "Goal field is required"
+msgstr "L'objectif est requis"
+
+#: investments/models/fund.py:75
+#: investments/tests/models/funds/test_validations.py:48
+msgid "Closing date has not expired yet"
+msgstr "La date de clôture n'est pas encore atteinte"
+
+#: investments/models/fund.py:78
 msgid "fund"
 msgstr "fonds"
 
-#: investments/models.py:13
+#: investments/models/fund.py:79
 msgid "funds"
 msgstr "fonds"
 
-#: investments/models.py:24
+#: investments/models/subscription.py:16
 msgid "subscription"
 msgstr "souscription"
 
-#: investments/models.py:25
+#: investments/models/subscription.py:17
 msgid "subscriptions"
 msgstr "souscriptions"
+
+#. Translators: Action button in the admin Fund edit view
+#: investments/templates/admin/investments/fund/change_form_object_tools.html:10
+msgid "Publish"
+msgstr "Publier"
+
+#. Translators: Action button in the admin Fund edit view
+#: investments/templates/admin/investments/fund/change_form_object_tools.html:16
+msgid "Close fund"
+msgstr "Clôturer le fonds"
+
+#: investments/templates/admin/investments/fund/change_form_object_tools.html:21
+msgid "History"
+msgstr "Historique"
+
+#: investments/templates/admin/investments/fund/change_form_object_tools.html:24
+msgid "View on site"
+msgstr "Voir sur le site"
+
+#. Translators: Browser title for the subscriptions dashboard page
+#: investments/templates/investments/fund_list.html:4
+msgid "Funds"
+msgstr "fonds"
+
+#: investments/templates/investments/fund_list.html:8
+msgid "Funds open to investment"
+msgstr "Fonds ouverts aux investissements"
+
+#: investments/templates/investments/fund_list.html:21
+msgid "There is currently no fund open to investment"
+msgstr "Il n'y a actuellement aucun fond ouvert aux investissements"
 
 #. Translators: Browser title for the subscriptions dashboard page
 #: investments/templates/investments/subscription_list.html:4
@@ -46,6 +129,6 @@ msgid "Your Subscriptions"
 msgstr "Vos souscriptions"
 
 #: investments/templates/investments/subscription_list.html:22
-#: investments/tests/test_views.py:30
+#: investments/tests/views/test_subscriptions.py:30
 msgid "You have not subscribed to any fund"
 msgstr "Vous n'avez souscrit à aucun fonds"

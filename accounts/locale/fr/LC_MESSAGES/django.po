@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-27 17:46+0200\n"
+"POT-Creation-Date: 2022-11-10 15:54+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "Please login to see this page."
 msgstr "Veuillez vous connecter pour accéder à cette page"
 
-#: accounts/templates/registration/login.html:41
+#: accounts/templates/registration/login.html:36
 msgid "Lost password?"
 msgstr "Mot de passe perdu ?"
 

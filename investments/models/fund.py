@@ -1,7 +1,7 @@
 from datetime import date
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from djmoney.models.fields import MoneyField
 
 from django_fsm import FSMField, transition
@@ -12,11 +12,12 @@ class Fund(models.Model):
     class Status(models.TextChoices):
         BEING_CREATED = 'being created', _('Being created')
         PUBLISHED = 'published', _('Published')
-        CLOSED = 'closed', _('Closed')
+        CLOSED = 'closed', pgettext_lazy('Fund Status. E.g.: "This fund is now closed"', 'Closed')
 
-    # Translators: database attributes of a Fund record
     name = models.CharField(_('Fund name'), max_length=100, unique=True)
-    closing_date = models.DateField(_('Closing date'), blank=True, null=True)
+    closing_date = models.DateField(pgettext_lazy('Bring a fund to a close', 'Closing date'),
+                                    blank=True,
+                                    null=True)
     goal = MoneyField(_('Goal'),
                       max_digits=10,
                       decimal_places=2,
@@ -55,12 +56,18 @@ class Fund(models.Model):
         if self.status == self.Status.PUBLISHED:
             if self.closing_date is None and self.goal is None:
                 raise ValidationError({
-                    'closing_date': ValidationError(_('Closing date field is required'), code='required'),
+                    'closing_date': ValidationError(
+                        pgettext_lazy('Bring a fund to a close', 'Closing date field is required'),
+                        code='required'
+                    ),
                     'goal': ValidationError(_('Goal field is required'), code='required')
                 })
             if self.closing_date is None:
-                # Translators: error feedback if this field is missing when trying to save it
-                raise ValidationError({'closing_date': _('Closing date field is required')}, code='required')
+                raise ValidationError(
+                    {'closing_date': pgettext_lazy('Bring a fund to a close',
+                                                   'Closing date field is required')},
+                    code='required'
+                )
             if self.goal is None:
                 raise ValidationError({'goal': _('Goal field is required')}, code='required')
         if self.status == self.Status.CLOSED:

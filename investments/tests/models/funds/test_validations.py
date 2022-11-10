@@ -1,6 +1,6 @@
 from datetime import date, timedelta
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, pgettext_lazy
 from django_fsm import TransitionNotAllowed
 import pytest
 
@@ -82,7 +82,8 @@ class TestWhenTransitionningToPublished:
         with pytest.raises(ValidationError) as exception_info:
             _publishable_fund.full_clean()
 
-        assert _('Closing date field is required') in exception_info.value.messages
+        assert pgettext_lazy('Bring a fund to a close',
+                             'Closing date field is required') in exception_info.value.messages
 
     @pytest.mark.django_db
     def test_goal_presence(self, _publishable_fund):
@@ -103,5 +104,6 @@ class TestWhenTransitionningToPublished:
         with pytest.raises(ValidationError) as exception_info:
             _publishable_fund.full_clean()
 
-        assert _('Closing date field is required') in exception_info.value.messages
+        assert pgettext_lazy('Bring a fund to a close',
+                             'Closing date field is required') in exception_info.value.messages
         assert _('Goal field is required') in exception_info.value.messages
