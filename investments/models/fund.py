@@ -55,9 +55,9 @@ class Fund(models.Model):
                 })
             if self.closing_date is None:
                 # Translators: error feedback if this field is missing when trying to save it
-                raise ValidationError(_('Closing date field is required'), code='required')
+                raise ValidationError({'closing_date': _('Closing date field is required')}, code='required')
             if self.goal is None:
-                raise ValidationError(_('Goal field is required'), code='required')
+                raise ValidationError({'goal': _('Goal field is required')}, code='required')
         if self.status == self.Status.CLOSED:
             if self.closing_date >= date.today():
                 raise ValidationError(_('Closing date has not expired yet'))

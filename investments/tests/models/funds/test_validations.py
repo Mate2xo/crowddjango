@@ -78,7 +78,7 @@ class TestWhenTransitionningToPublished:
         with pytest.raises(ValidationError) as exception_info:
             _publishable_fund.full_clean()
 
-        assert _('Closing date field is missing') in exception_info.value.messages
+        assert _('Closing date field is required') in exception_info.value.messages
 
     @pytest.mark.django_db
     def test_goal_presence(self, _publishable_fund):
@@ -88,7 +88,7 @@ class TestWhenTransitionningToPublished:
         with pytest.raises(ValidationError) as exception_info:
             _publishable_fund.full_clean()
 
-        assert _('Goal field is missing') in exception_info.value.messages
+        assert _('Goal field is required') in exception_info.value.messages
 
     @pytest.mark.django_db
     def test_closing_date_and_goal_presence_feedback(self, _publishable_fund):
@@ -99,5 +99,5 @@ class TestWhenTransitionningToPublished:
         with pytest.raises(ValidationError) as exception_info:
             _publishable_fund.full_clean()
 
-        assert _('Closing date field is missing') in exception_info.value.messages
-        assert _('Goal field is missing') in exception_info.value.messages
+        assert _('Closing date field is required') in exception_info.value.messages
+        assert _('Goal field is required') in exception_info.value.messages

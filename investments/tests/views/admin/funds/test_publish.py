@@ -1,4 +1,4 @@
-from django.utils.translation import gettext_lazy as _
+from django.contrib.admin.options import messages
 from django.urls import reverse
 import pytest
 
@@ -43,8 +43,9 @@ class TestWithAnUnpublishableFund:
     def test_validation_feedback(self, unpublishable_fund, admin_client):
         response = admin_client.post(reverse('admin:investments_fund_publish', args=[unpublishable_fund.id]))
 
-        errors = response.context_data['adminform'].errors
-        assert 'closing_date' in errors and 'goal' in errors
+        error_msgs = list(map(lambda obj: obj.message, messages.get_messages(response.wsgi_request)))
+        assert 'closing_date' in error_msgs[0]
+        assert 'goal' in error_msgs[1]
 
 
 class TestWithAPublishableFund:

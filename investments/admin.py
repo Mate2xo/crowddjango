@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.shortcuts import Http404, redirect
+from django.contrib.admin.options import messages
+from django.shortcuts import Http404, redirect, reverse
 from django.urls import path
 from django.utils.translation import gettext_lazy as _
 from django_fsm import can_proceed
@@ -26,24 +27,22 @@ class FundAdmin(admin.ModelAdmin):
 
         fund_to_publish = Fund.objects.get(id=pk)
         if not can_proceed(fund_to_publish.publish):
-            fund_to_publish.status = Fund.Status.PUBLISHED
-            adminform = self.__rebuild_form(request, fund_to_publish)
-            response = self.change_view(request, str(pk))
-            response.context_data['adminform'] = adminform
-            return response
+            self.__give_status_validation_feedback(request,
+                                                   fund_to_publish,
+                                                   status=Fund.Status.PUBLISHED)
+            return redirect(reverse('admin:investments_fund_change', args=[pk]))
 
         fund_to_publish.publish()
         fund_to_publish.save()
-        # Translators: positive feedback from admin fund publishing action
+        # Translators: successful feedback from admin fund publishing action
         self.message_user(request, _('This fund is now published'))
         return redirect('admin:investments_fund_changelist')
 
-    def __rebuild_form(self, request, fund):
-        form = self.get_form(request, fund)(data=fund.__dict__, instance=fund)
-        return admin.helpers.AdminForm(form,
-                                       self.get_fieldsets(request, fund),
-                                       self.get_prepopulated_fields(request, fund),
-                                       model_admin=self)
+    def __give_status_validation_feedback(self, request, fund, status):
+        fund.status = status
+        form = self.get_form(request, fund, change=True)(data=fund.__dict__.copy(), instance=fund)
+        for field_name, error in form.errors.items():
+            messages.error(request, f'{field_name}: {error.as_text()}')
 
 
 admin.site.register(Fund, FundAdmin)
