@@ -2,11 +2,13 @@ from django.test import TestCase
 from django.urls import reverse
 from unittest.mock import patch
 
+
 class SignUpGet(TestCase):
     def test_http_ok_status(self):
         response = self.client.get(reverse('accounts:signup'))
 
         self.assertEqual(response.status_code, 200)
+
 
 class SignUpPost(TestCase):
     def setUp(self):

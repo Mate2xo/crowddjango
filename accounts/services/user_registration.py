@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.db import transaction
 
 from accounts.models import Legal, Natural
+
 
 class UserRegistration():
     @classmethod
@@ -8,13 +10,14 @@ class UserRegistration():
         if not form.is_valid():
             return False
 
-        user = form.save()
-        cls.__associate_user_and_profile(user, form)
+        with transaction.atomic():
+            user = form.save()
+            cls.associate_user_and_profile(user, form)
 
         return True
 
     @classmethod
-    def __associate_user_and_profile(cls, user, form):
+    def associate_user_and_profile(cls, user, form):
         profile_type = form.cleaned_data['profile_type']
         if profile_type == 'Legal':
             Legal(user=user).save()
