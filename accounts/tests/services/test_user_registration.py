@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
 import pytest
 
 from accounts.forms import SignUpForm
@@ -75,11 +74,11 @@ class TestWithInvalidParams:
 class TestWhenProfileCreationFails:
     @pytest.mark.django_db
     def test_user_creation_is_rollbacked(self, mocker, valid_params):
-        def associate_user_and_profile_mock(user, form):
+        def create_user_profile_mock(input):
             raise RuntimeError('BOOM')
 
-        mocker.patch('accounts.views.UserRegistration.associate_user_and_profile',
-                     associate_user_and_profile_mock)
+        mocker.patch('accounts.views.UserRegistration.create_user_profile',
+                     create_user_profile_mock)
 
         with pytest.raises(RuntimeError):
             UserRegistration.perform(SignUpForm(valid_params))

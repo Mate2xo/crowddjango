@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "896448a587e2812864a346a21e73fb2784691aab85da65a25a071060965f607c"
+            "sha256": "3dc1c0329b58433d2ceccab736b8c7107bc10beb025e14dafee506d9d8b28d0e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -179,6 +179,14 @@
                 "sha256:e89512406b793ca39f5971bc999cc538ce125c0e51c27941bef4568b460095e2"
             ],
             "version": "==2022.6"
+        },
+        "returns": {
+            "hashes": [
+                "sha256:4544bb67849c1ef1bbf7823759d433a773959e5b77a8fd06d01fef6d060f2ac5",
+                "sha256:ae3ce9e5165d1218905291b4d5881b4e8a86ca478437bef3b0af1de8df57ec69"
+            ],
+            "index": "pypi",
+            "version": "==0.19.0"
         },
         "setuptools": {
             "hashes": [
@@ -373,11 +381,11 @@
         },
         "exceptiongroup": {
             "hashes": [
-                "sha256:a31cd183c3dea02e617aab5153588d5f7258a77b51f0ef41b3815ae8a0d0f695",
-                "sha256:c22f11ec6a10d2b453871c5c5fe887436c4d1961324ce9090f2ca6ddc4180c27"
+                "sha256:6002703c7d31fb9950ddc8780840f67880c440895dc1151dd551553aa1246e4a",
+                "sha256:76cac74b5207c5997678a1c7105cb6f14213c9c63c096a38cfcb529d83ce5c02"
             ],
             "markers": "python_version < '3.11'",
-            "version": "==1.0.2"
+            "version": "==1.0.3"
         },
         "executing": {
             "hashes": [
@@ -396,11 +404,11 @@
         },
         "faker": {
             "hashes": [
-                "sha256:4a3465624515a6807e8aa7e8eeb85bdd86a2fa53de4e258892dd6be95362462e",
-                "sha256:b9dd2fd9a9ac68a4e0c5040cd9e9bfaa099fa8dd15bae5f01f224a45431818d5"
+                "sha256:0094fe3340ad73c490d3ffccc59cc171b161acfccccd52925c70970ba23e6d6b",
+                "sha256:43da04aae745018e8bded768e74c84423d9dc38e4c498a53439e749d90e20bc0"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==15.3.1"
+            "version": "==15.3.2"
         },
         "filelock": {
             "hashes": [

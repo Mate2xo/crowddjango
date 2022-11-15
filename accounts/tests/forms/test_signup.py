@@ -2,9 +2,10 @@ from django.test import TestCase
 
 from accounts.forms import SignUpForm
 
+
 class SignUpFormTest(TestCase):
     def test_with_invalid_params(self):
-        data = { 'username': '' }
+        data = {'username': ''}
         form = SignUpForm(data)
         self.assertFalse(form.is_valid())
 
