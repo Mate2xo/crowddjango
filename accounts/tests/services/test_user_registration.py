@@ -38,10 +38,9 @@ def test_creates_a_profile(user_params, profile_params):
 
 
 @pytest.mark.django_db
-def xtest_sends_a_welcome_email(user_params, profile_params):
+def test_sends_a_welcome_email(user_params, profile_params):
     UserRegistration.perform(SignUpForm(user_params), NaturalProfileForm(profile_params))
 
-    # mail.send_mail(subject='test subject', message='test body', from_email='some@whe.re', recipient_list=['Ma@ri.o'])
     assert len(mail.outbox) == 1
     assert mail.outbox[0].subject == _('Welcome to VoyagesPasCher')
 

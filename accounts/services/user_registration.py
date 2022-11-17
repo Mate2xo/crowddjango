@@ -1,9 +1,9 @@
-from django.core.mail import send_mail
+from django.core.mail import settings
 from django.db import transaction
 from returns import result, pointfree, pipeline
+from templated_email import send_templated_mail
 
 from accounts.forms import LegalProfileForm, NaturalProfileForm, SignUpForm
-from accounts.models import Legal, Natural
 
 
 class UserRegistration():
@@ -18,7 +18,7 @@ class UserRegistration():
                 cls.validate_form,
                 pointfree.bind(cls.create_user),
                 pointfree.bind(cls.create_user_profile),
-                # cls.send_welcome_email
+                pointfree.map_(cls.send_welcome_email)
             )
 
     @classmethod
@@ -43,5 +43,7 @@ class UserRegistration():
 
     @classmethod
     def send_welcome_email(cls, input: dict) -> None:
-        pass
-        # send_mail()
+        send_templated_mail(template_name='users/welcome',
+                            recipient_list=[input['profile'].email],
+                            from_email=settings.DEFAULT_FROM_EMAIL,
+                            context={})
