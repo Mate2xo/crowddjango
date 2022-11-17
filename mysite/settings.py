@@ -144,3 +144,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'accounts:profile_show'
 LOGOUT_REDIRECT_URL = 'home'
+
+EMAIL_PORT = 1025  # local setting to send mails to MailHog
