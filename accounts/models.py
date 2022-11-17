@@ -3,13 +3,16 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from polymorphic.models import PolymorphicModel
 
+
 class Profile(PolymorphicModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     phone_number = models.CharField(max_length=30)
+    email = models.EmailField()
 
     class Meta:
         verbose_name = _('profile')
         verbose_name_plural = _('profiles')
+
 
 class Legal(Profile):
     name = models.CharField(max_length=200)
@@ -22,6 +25,7 @@ class Legal(Profile):
     class Meta:
         verbose_name = _('legal entity')
         verbose_name_plural = _('legal entities')
+
 
 class Natural(Profile):
     place_of_birth = models.CharField(max_length=200)

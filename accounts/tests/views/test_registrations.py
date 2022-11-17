@@ -23,25 +23,20 @@ class TestSignUpPost():
             'last_name': 'pan',
             'password1': 'P@assword1',
             'password2': 'P@assword1',
-            'profile_type': 'Legal'
+            'profile_type': 'Legal',
+            'email': 'dans@la.canopée'
         }
 
-    @patch('accounts.services.UserRegistration.perform', autospec=True)
-    def test_with_successful_user_registration_redirects_to_login(self, mocked_method, valid_params, client):
-        mocked_method.return_value = Success('yeah')
-
+    @pytest.mark.django_db
+    def test_with_successful_user_registration_redirects_to_login(self, valid_params, client):
         response = client.post('/accounts/signup/', valid_params)
 
-        assert mocked_method.called
         assertRedirects(response, reverse('login'))
 
-    @patch('accounts.services.UserRegistration.perform', autospec=True)
     @pytest.mark.django_db
-    def test_with_failed_user_registration_redirects_to_signup(self, mocked_method, valid_params, client):
-        mocked_method.return_value = Failure('ooh')
+    def test_with_failed_user_registration_redirects_to_signup(self, valid_params, client):
         invalid_params = valid_params | {'profile_type': ''}
 
         response = client.post('/accounts/signup/', invalid_params)
 
-        assert mocked_method.called
         assertTemplateUsed(response, 'registration/signup.html')
