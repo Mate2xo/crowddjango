@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 15:54+0100\n"
+"POT-Creation-Date: 2022-11-18 09:42+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -19,28 +19,29 @@ msgstr ""
 msgid "accounts"
 msgstr "comptes utilisateur"
 
-#. Translators: On the sign-up form, the user must choose if their account is made on behalf of a company, or for a real person
-#: accounts/forms.py:10 accounts/models.py:23
+#. Translators: On the sign-up form, the user must choose if their account
+#. is made on behalf of a company, or for a real person
+#: accounts/forms.py:12 accounts/forms.py:23 accounts/models.py:26
 msgid "legal entity"
 msgstr "personne morale"
 
-#: accounts/forms.py:10 accounts/models.py:33
+#: accounts/forms.py:12 accounts/forms.py:31 accounts/models.py:37
 msgid "natural person"
 msgstr "personne physique"
 
-#: accounts/models.py:11
+#: accounts/models.py:13
 msgid "profile"
 msgstr "profil"
 
-#: accounts/models.py:12
+#: accounts/models.py:14
 msgid "profiles"
 msgstr "profils"
 
-#: accounts/models.py:24
+#: accounts/models.py:27
 msgid "legal entities"
 msgstr "personnes morales"
 
-#: accounts/models.py:34
+#: accounts/models.py:38
 msgid "natural persons"
 msgstr "personnes physiques"
 
@@ -69,8 +70,16 @@ msgstr "Veuillez vous connecter pour accéder à cette page"
 msgid "Lost password?"
 msgstr "Mot de passe perdu ?"
 
-#: accounts/templates/registration/signup.html:4
-#: accounts/templates/registration/signup.html:7
-#: accounts/templates/registration/signup.html:11
+#: accounts/templates/registration/signup.html:5
+#: accounts/templates/registration/signup.html:8
 msgid "Sign Up"
 msgstr "Inscription"
+
+#: accounts/templates/templated_email/users/welcome.email:3
+#: accounts/tests/services/test_user_registration.py:45
+msgid "Welcome to VoyagesPasCher"
+msgstr "Bienvenue to VoyagesPasCher"
+
+#: accounts/templates/templated_email/users/welcome.email:6
+msgid "Yesh good or good?"
+msgstr "Bien le bonjour 🕴"
