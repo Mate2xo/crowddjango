@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap5 i18n %}
+
+{% block title %}{% translate "Edit Profile" %}{% endblock %}
+
+{% block content %}
+  {% translate 'Update Profile' as update_profile_text %}
+  <h2 class="d-flex justify-content-center">{{ update_profile_text }}</h2>
+  <form action="{% url 'accounts:profile_edit' %}", class="w-50 container" method="POST">
+    {% bootstrap_form form %}
+  </form>
+{% endblock %}

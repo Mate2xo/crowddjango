@@ -1,18 +1,8 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
-
 from returns.pipeline import is_successful
 
-from accounts.models import Legal, Natural
-
-from .forms import LegalProfileForm, NaturalProfileForm, ProfileForm, SignUpForm
-from .services import UserRegistration
-
-
-@login_required()
-def profile(request):
-    return HttpResponse("Profile page")
+from accounts.forms import LegalProfileForm, NaturalProfileForm, ProfileForm, SignUpForm
+from accounts.services import UserRegistration
 
 
 def signup(request):
