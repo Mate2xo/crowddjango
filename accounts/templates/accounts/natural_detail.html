@@ -4,11 +4,13 @@
 {% block title %}{% translate "My Profile" %}{% endblock %}
 
 {% block content %}
-  <ul>
-    <li>{{ natural.email }}</li>
-    <li>{{ natural.phone_number }}</li>
-    <li>{{ natural.place_of_birth }}</li>
-  </ul>
+  <main class="container">
+    <ul>
+      <li>{{ natural.email }}</li>
+      <li>{{ natural.phone_number }}</li>
+      <li>{{ natural.place_of_birth }}</li>
+    </ul>
+  </main>
   {% url 'accounts:profile_edit' as edit_path %}
   {% bootstrap_button "edit" button_type='link' href=edit_path %}
 {% endblock %}

@@ -8,6 +8,7 @@ class Profile(PolymorphicModel):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     phone_number = models.CharField(max_length=30)
     email = models.EmailField()
+    avatar = models.ImageField(blank=True, null=True, upload_to='accounts/profiles/avatars/')
 
     class Meta:
         verbose_name = _('profile')
