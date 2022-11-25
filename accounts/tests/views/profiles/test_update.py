@@ -1,9 +1,7 @@
-from django.core.files import File
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.handlers.asgi import tempfile
 from django.urls import reverse
 import pytest
-from PIL import Image
 
 from accounts.tests.factories.profiles import NaturalFactory
 from accounts.tests.factories.users import UserFactory
@@ -90,7 +88,6 @@ class TestWithExistingAvatar():
         assert bool(avatar) is False
         assert not avatar.storage.exists(filename)
 
-    @pytest.mark.debug
     @pytest.mark.django_db(transaction=True)
     def test_replacing_avatar_creates_a_new_file_and_deletes_the_old_one(self,
                                                                          client,
