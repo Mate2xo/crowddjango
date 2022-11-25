@@ -9,8 +9,9 @@ from utils.null_object import Null
 
 class ProfileDetail(LoginRequiredMixin, DetailView):
     def setup(self, request, *args, **kwargs):
+        profile = Null() if request.user.is_anonymous else request.user.profile
         if not self.model:
-            self.model = request.user.profile.__class__
+            self.model = profile.__class__
         return super().setup(request, *args, **kwargs)
 
     def get_object(self):
@@ -24,13 +25,14 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
         return reverse('accounts:profile_show')
 
     def setup(self, request, *args, **kwargs):
-        self.model = request.user.profile.__class__
-        self.fields = EDITABLE_FIELDS[self.model]
+        profile = Null() if request.user.is_anonymous else request.user.profile
+        if profile:
+            self.model = profile.__class__
+            self.fields = EDITABLE_FIELDS[self.model]
         return super().setup(request, *args, **kwargs)
 
     def get_object(self):
         profile = self.request.user.profile
-        profile.avatar = profile.avatar or Null()
         return profile
 
 

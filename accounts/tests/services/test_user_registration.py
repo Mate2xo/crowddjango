@@ -96,7 +96,7 @@ class TestWhenProfileCreationFails:
         def create_user_profile_mock(input):
             raise RuntimeError('BOOM')
 
-        mocker.patch('accounts.views.UserRegistration.create_user_profile',
+        mocker.patch('accounts.services.UserRegistration.create_user_profile',
                      create_user_profile_mock)
 
         with pytest.raises(RuntimeError):
