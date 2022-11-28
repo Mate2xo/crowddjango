@@ -1,6 +1,4 @@
-from .base import *
-
-DEBUG = False
+from config.settings.base import *
 
 # Speed up tests by choosing simple encryption for user passwords
 PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]

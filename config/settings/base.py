@@ -20,7 +20,7 @@ os.environ['PYTHONBREAKPOINT'] = 'ipdb.set_trace'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # MUST between session and common. @see https://docs.djangoproject.com/en/4.1/topics/i18n/translation/#how-django-discovers-language-preference
+    # LocaleMiddleware MUST between session and common.
+    # @see https://docs.djangoproject.com/en/4.1/topics/i18n/translation/#how-django-discovers-language-preference
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
