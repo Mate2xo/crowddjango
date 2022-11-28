@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-18 09:42+0100\n"
+"POT-Creation-Date: 2022-11-28 15:58+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -21,29 +21,44 @@ msgstr "comptes utilisateur"
 
 #. Translators: On the sign-up form, the user must choose if their account
 #. is made on behalf of a company, or for a real person
-#: accounts/forms.py:12 accounts/forms.py:23 accounts/models.py:26
+#: accounts/forms.py:12 accounts/forms.py:23 accounts/models.py:36
 msgid "legal entity"
 msgstr "personne morale"
 
-#: accounts/forms.py:12 accounts/forms.py:31 accounts/models.py:37
+#: accounts/forms.py:12 accounts/forms.py:31 accounts/models.py:47
 msgid "natural person"
 msgstr "personne physique"
 
-#: accounts/models.py:13
+#: accounts/models.py:23
 msgid "profile"
 msgstr "profil"
 
-#: accounts/models.py:14
+#: accounts/models.py:24
 msgid "profiles"
 msgstr "profils"
 
-#: accounts/models.py:27
+#: accounts/models.py:37
 msgid "legal entities"
 msgstr "personnes morales"
 
-#: accounts/models.py:38
+#: accounts/models.py:48
 msgid "natural persons"
 msgstr "personnes physiques"
+
+#: accounts/templates/accounts/legal_detail.html:4
+#: accounts/templates/accounts/natural_detail.html:4
+msgid "My Profile"
+msgstr "Mon profil"
+
+#: accounts/templates/accounts/legal_form.html:4
+#: accounts/templates/accounts/natural_form.html:4
+msgid "Edit Profile"
+msgstr "Édition du profil"
+
+#: accounts/templates/accounts/legal_form.html:7
+#: accounts/templates/accounts/natural_form.html:7
+msgid "Update Profile"
+msgstr "Mettre le profil à jour"
 
 #: accounts/templates/registration/login.html:4
 msgid "Login"
@@ -75,11 +90,17 @@ msgstr "Mot de passe perdu ?"
 msgid "Sign Up"
 msgstr "Inscription"
 
-#: accounts/templates/templated_email/users/welcome.email:3
 #: accounts/tests/services/test_user_registration.py:45
 msgid "Welcome to VoyagesPasCher"
 msgstr "Bienvenue to VoyagesPasCher"
 
-#: accounts/templates/templated_email/users/welcome.email:6
-msgid "Yesh good or good?"
-msgstr "Bien le bonjour 🕴"
+#: accounts/tests/validators/test_file_size.py:26
+#: accounts/validators/file_size.py:7
+#, python-brace-format
+msgid ""
+"This file is {file_size} bytes, but cannot be larger than {max_size} bytes"
+msgstr ""
+"Ce fichier fait {file_size} bytes, mais ne peut pas peser plus de {max_size} bytes"
+
+#~ msgid "Yesh good or good?"
+#~ msgstr "Bien le bonjour 🕴"
