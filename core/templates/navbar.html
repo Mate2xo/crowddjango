@@ -1,7 +1,7 @@
 {% load i18n static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{% url 'home' %}">
       <img src="{% static "core/images/brand.png" %}" alt="brand image" width="25" height="25" class="d-inline-block align-text-top">
       CrowdDjango
     </a>
@@ -12,15 +12,15 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           {# Translators: Navbar #}
-          <a class="nav-link active" aria-current="page" href="#">{% translate "Home" %}</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">{% translate "Home" %}</a>
         </li>
         <li class="nav-item">
           {# Translators: Navbar #}
-          <a class="nav-link" href="#">{% translate "Funds" %}</a>
+          <a class="nav-link" href="{% url 'investments:funds_list' %}">{% translate "Funds" %}</a>
         </li>
         <li class="nav-item">
           {# Translators: Navbar #}
-          <a class="nav-link" href="#">{% translate "Dashboard" %}</a>
+          <a class="nav-link" href="{% url 'investments:dashboard' %}">{% translate "Dashboard" %}</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
