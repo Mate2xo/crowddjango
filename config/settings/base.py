@@ -27,6 +27,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = ['accounts.apps.AccountsConfig', 'investments.apps.InvestmentsConfig']
 THIRD_PARTY_APPS = ['bootstrap5', 'django_extensions', 'djmoney', 'polymorphic']
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 # /!\ Middlewares order matters
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     # LocaleMiddleware MUST between session and common.
     # @see https://docs.djangoproject.com/en/4.1/topics/i18n/translation/#how-django-discovers-language-preference
@@ -75,10 +77,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_basics'
-    }
+    'default': env.db('DATABASE_URL', default='postgres:///django_basics')
 }
 
 # Password validation
@@ -98,6 +97,10 @@ LOGIN_REDIRECT_URL = 'accounts:profile_show'
 LOGOUT_REDIRECT_URL = 'home'
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'public'
 STATICFILES_DIRS = [
     BASE_DIR / 'core' / 'static',
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+ADMINS = [('cap sens', 'admin@capsens.eu')]
