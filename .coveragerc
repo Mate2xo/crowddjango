@@ -11,5 +11,5 @@ exclude_lines =
 
 [run]
 branch = True
-omit = mysite/asgi.py
-       mysite/wsgi.py
+omit = core/asgi.py
+       core/wsgi.py

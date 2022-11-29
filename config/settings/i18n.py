@@ -10,7 +10,7 @@ LANGUAGES = [
     ('fr', _('French'))
 ]
 LOCALE_PATHS = [
-    BASE_DIR / 'mysite' / 'locale',
+    BASE_DIR / 'core' / 'locale',
 ]
 TIME_ZONE = 'Europe/Paris'
 USE_I18N = True

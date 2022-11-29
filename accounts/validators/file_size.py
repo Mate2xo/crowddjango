@@ -1,4 +1,4 @@
-from django.core.validators import MaxValueValidator, ValidationError
+from django.core.validators import ValidationError
 from django.db.models.fields.files import FieldFile
 from django.utils.translation import gettext as _
 

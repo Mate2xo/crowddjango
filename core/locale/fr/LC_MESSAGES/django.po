@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2022-11-29 09:17+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -23,43 +23,43 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Français"
 
-#: mysite/templates/home.html:3
+#: core/templates/home.html:3
 msgid "Hello world"
 msgstr "Bonjour monde 💩"
 
-#: mysite/templates/home.html:8
+#: core/templates/home.html:8
 msgid "Hi Mom!"
 msgstr "Salut mman 🚀"
 
 #. Translators: Navbar
-#: mysite/templates/navbar.html:12
+#: core/templates/navbar.html:15
 msgid "Home"
 msgstr "Accueil"
 
 #. Translators: Navbar
-#: mysite/templates/navbar.html:16
+#: core/templates/navbar.html:19
 msgid "Funds"
 msgstr "Fonds"
 
 #. Translators: Navbar
-#: mysite/templates/navbar.html:20
+#: core/templates/navbar.html:23
 msgid "Dashboard"
 msgstr "Dashboard"
 
 #. Translators: Navbar
-#: mysite/templates/navbar.html:28
+#: core/templates/navbar.html:31
 msgid "Profile"
 msgstr "Profil"
 
 #. Translators: Navbar
-#: mysite/templates/navbar.html:34
+#: core/templates/navbar.html:37
 msgid "Log out"
 msgstr "Se déconnecter"
 
-#: mysite/templates/navbar.html:40
+#: core/templates/navbar.html:43
 msgid "Log in"
 msgstr "Se connecter"
 
-#: mysite/templates/navbar.html:42
+#: core/templates/navbar.html:45
 msgid "Sign up"
 msgstr "Inscription"

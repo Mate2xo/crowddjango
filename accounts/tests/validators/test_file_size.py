@@ -1,6 +1,6 @@
 from tempfile import NamedTemporaryFile
 from django.core.validators import ValidationError
-from django.db.models.fields.files import FieldFile, File
+from django.db.models.fields.files import File
 from django.utils.translation import gettext_lazy as _
 
 import pytest
