@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap5 i18n %}
+
+{% block title %}{% translate "My Profile" %}{% endblock %}
+
+{% block content %}
+  <main class="container d-flex justify-content-center">
+    <ul>
+      <li>{{ legal.name }}</li>
+      <li>{{ legal.email }}</li>
+      <li>{{ legal.phone_number }}</li>
+      <li><img src="{{legal.avatar.url}}"></li>
+      {% url 'accounts:profile_edit' as edit_path %}
+      {% bootstrap_button "edit" button_type='link' href=edit_path %}
+    </ul>
+  </main>
+{% endblock %}

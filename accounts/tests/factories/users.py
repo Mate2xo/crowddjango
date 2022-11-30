@@ -1,4 +1,7 @@
+import random
+
 from django.contrib.auth.models import User
+
 import factory
 
 
@@ -21,6 +24,12 @@ class UserFactory(factory.django.DjangoModelFactory):
         with_legal_profile = factory.Trait(
             profile=factory.RelatedFactory(
                 'accounts.tests.factories.profiles.LegalFactory',
+                factory_related_name='user'
+            )
+        )
+        with_any_profile = factory.Trait(
+            profile=factory.RelatedFactory(
+                f"accounts.tests.factories.profiles.{random.sample(['Legal', 'Natural'], 1)[0]}Factory",
                 factory_related_name='user'
             )
         )
