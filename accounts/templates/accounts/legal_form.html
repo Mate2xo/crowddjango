@@ -6,7 +6,9 @@
 {% block content %}
   {% translate 'Update Profile' as update_profile_text %}
   <h2 class="d-flex justify-content-center">{{ update_profile_text }}</h2>
-  <form action="{% url 'accounts:profile_edit' %}", class="w-50 container" method="POST">
+  <form action="{% url 'accounts:profile_edit' %}", class="w-50 container" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
     {% bootstrap_form form %}
+    {% buttons submit=update_profile_text %}{% endbuttons %}
   </form>
 {% endblock %}
