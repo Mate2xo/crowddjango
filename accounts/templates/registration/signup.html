@@ -1,13 +1,20 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 {% load i18n %}
 
 {% block title %}{% translate 'Sign Up' %}{% endblock %}
 
 {% block content %}
-  <h2>{% translate 'Sign Up' %}</h2>
-  <form method="post">
+  {% translate 'Sign Up' as signup_text %}
+
+  <h2 class="d-flex justify-content-center">{{ signup_text }}</h2>
+  {% bootstrap_form_errors user_form %}
+  <form method="post" class="w-50 container">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% translate 'Sign Up' %}</button>
+    {% bootstrap_form user_form %}
+
+    {% bootstrap_form profile_form %}
+
+    {% bootstrap_button signup_text button_type='submit' %}
   </form>
 {% endblock %}
