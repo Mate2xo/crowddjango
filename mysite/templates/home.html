@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
 {% block title %}{% translate "Hello world" %}{% endblock %}
+
 {% block content %}
 
-{% translate "Hi Mom!" %}
-{% if user.is_authenticated %}
-  <p>{% translate "You're logged in" %}</p>
-  <a href="{% url "logout" %}">{% translate "Log out" %}</a>
-{% else %}
-  <p>{% translate "You are not logged in" %}</p>
-  <a href="{% url 'login' %}">{% translate "Log in" %}</a>
-  or
-  <a href="{% url 'accounts:signup' %}">{% translate "Sign up" %}</a>
-{% endif %}
+<main class="container">
+  {% translate "Hi Mom!" %}
+</main>
 
 {% endblock %}

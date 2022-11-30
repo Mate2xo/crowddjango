@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 18:39+0200\n"
+"POT-Creation-Date: 2022-11-28 15:58+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -19,30 +19,46 @@ msgstr ""
 msgid "accounts"
 msgstr "comptes utilisateur"
 
-#. Translators: On the sign-up form, the user must choose if their account is made on behalf of a company, or for a real person
-#: accounts/forms.py:10 accounts/models.py:23
+#. Translators: On the sign-up form, the user must choose if their account
+#. is made on behalf of a company, or for a real person
+#: accounts/forms.py:12 accounts/forms.py:23 accounts/models.py:36
 msgid "legal entity"
 msgstr "personne morale"
 
-#: accounts/forms.py:10 accounts/models.py:33
+#: accounts/forms.py:12 accounts/forms.py:31 accounts/models.py:47
 msgid "natural person"
 msgstr "personne physique"
 
-#: accounts/models.py:11
+#: accounts/models.py:23
 msgid "profile"
 msgstr "profil"
 
-#: accounts/models.py:12
+#: accounts/models.py:24
 msgid "profiles"
 msgstr "profils"
 
-#: accounts/models.py:24
+#: accounts/models.py:37
 msgid "legal entities"
 msgstr "personnes morales"
 
-#: accounts/models.py:34
+#: accounts/models.py:48
 msgid "natural persons"
 msgstr "personnes physiques"
+
+#: accounts/templates/accounts/legal_detail.html:4
+#: accounts/templates/accounts/natural_detail.html:4
+msgid "My Profile"
+msgstr "Mon profil"
+
+#: accounts/templates/accounts/legal_form.html:4
+#: accounts/templates/accounts/natural_form.html:4
+msgid "Edit Profile"
+msgstr "Édition du profil"
+
+#: accounts/templates/accounts/legal_form.html:7
+#: accounts/templates/accounts/natural_form.html:7
+msgid "Update Profile"
+msgstr "Mettre le profil à jour"
 
 #: accounts/templates/registration/login.html:4
 msgid "Login"
@@ -65,12 +81,26 @@ msgstr ""
 msgid "Please login to see this page."
 msgstr "Veuillez vous connecter pour accéder à cette page"
 
-#: accounts/templates/registration/login.html:41
+#: accounts/templates/registration/login.html:36
 msgid "Lost password?"
 msgstr "Mot de passe perdu ?"
 
-#: accounts/templates/registration/signup.html:3
-#: accounts/templates/registration/signup.html:6
-#: accounts/templates/registration/signup.html:10
+#: accounts/templates/registration/signup.html:5
+#: accounts/templates/registration/signup.html:8
 msgid "Sign Up"
 msgstr "Inscription"
+
+#: accounts/tests/services/test_user_registration.py:45
+msgid "Welcome to VoyagesPasCher"
+msgstr "Bienvenue to VoyagesPasCher"
+
+#: accounts/tests/validators/test_file_size.py:26
+#: accounts/validators/file_size.py:7
+#, python-brace-format
+msgid ""
+"This file is {file_size} bytes, but cannot be larger than {max_size} bytes"
+msgstr ""
+"Ce fichier fait {file_size} bytes, mais ne peut pas peser plus de {max_size} bytes"
+
+#~ msgid "Yesh good or good?"
+#~ msgstr "Bien le bonjour 🕴"

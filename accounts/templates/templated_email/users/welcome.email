@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% block subject %}{% translate "Welcome to VoyagesPasCher" %}{% endblock %}
+
+{% block html %}
+<p>{% translate "Yesh good or good?" %}</p>
+{% endblock %}

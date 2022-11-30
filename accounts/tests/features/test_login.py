@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from accounts.tests.factories.users import UserFactory
+
 
 class LoginFeatureTest(LiveServerTestCase):
     @classmethod

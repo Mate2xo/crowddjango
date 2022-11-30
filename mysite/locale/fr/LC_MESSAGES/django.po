@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 18:32+0200\n"
+"POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2022-10-17\n"
 "Last-Translator: tim\n"
 "Language-Team: teamteam <team@team.ord>\n"
@@ -15,38 +15,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: mysite/settings.py:121
+#: config/settings/i18n.py:9
 msgid "English"
 msgstr "Anglais"
 
-#: mysite/settings.py:122
+#: config/settings/i18n.py:10
 msgid "French"
 msgstr "Français"
 
-#: mysite/templates/home.html:4
+#: mysite/templates/home.html:3
 msgid "Hello world"
 msgstr "Bonjour monde 💩"
 
-#: mysite/templates/home.html:7
+#: mysite/templates/home.html:8
 msgid "Hi Mom!"
-msgstr "Salut mman"
+msgstr "Salut mman 🚀"
 
-#: mysite/templates/home.html:9
-msgid "You're logged in"
-msgstr "Vous êtes connecté"
+#. Translators: Navbar
+#: mysite/templates/navbar.html:12
+msgid "Home"
+msgstr "Accueil"
 
-#: mysite/templates/home.html:10
+#. Translators: Navbar
+#: mysite/templates/navbar.html:16
+msgid "Funds"
+msgstr "Fonds"
+
+#. Translators: Navbar
+#: mysite/templates/navbar.html:20
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. Translators: Navbar
+#: mysite/templates/navbar.html:28
+msgid "Profile"
+msgstr "Profil"
+
+#. Translators: Navbar
+#: mysite/templates/navbar.html:34
 msgid "Log out"
 msgstr "Se déconnecter"
 
-#: mysite/templates/home.html:12
-msgid "You are not logged in"
-msgstr "Vous n'êtes pas connecté"
-
-#: mysite/templates/home.html:13
+#: mysite/templates/navbar.html:40
 msgid "Log in"
 msgstr "Se connecter"
 
-#: mysite/templates/home.html:15
+#: mysite/templates/navbar.html:42
 msgid "Sign up"
 msgstr "Inscription"

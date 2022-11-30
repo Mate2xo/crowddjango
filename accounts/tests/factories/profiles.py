@@ -4,20 +4,24 @@ import factory
 from accounts.models import Legal, Natural
 from accounts.tests.factories.users import UserFactory
 
+
 class NaturalFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Natural
 
+    email = 'test@test.test'
     user = factory.SubFactory(UserFactory)
 
     phone_number = factory.Faker('phone_number')
     place_of_birth = factory.Faker('city')
+
 
 class LegalFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Legal
 
     user = factory.SubFactory(UserFactory)
+    email = 'test@test.test'
 
     legal_representative_first_name = factory.Faker('first_name')
     legal_representative_last_name = factory.Faker('last_name')

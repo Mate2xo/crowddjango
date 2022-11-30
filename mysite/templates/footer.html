@@ -1,0 +1,28 @@
+{% load i18n %}
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+  <div class="me-auto">
+    <span class="mb-3 mb-md-0 text-muted">© 2022 EvilCorp, Inc</span>
+  </div>
+
+  <form action="{% url 'set_language' %}" method="POST">
+    {% csrf_token %}
+    <div class="row nav g-3">
+      <input name="next" type="hidden" value="{{ redirect_to }}">
+      <select class="col form-select" name="language">
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as langs %}
+        {% for lang in langs %}
+        <option value="{{ lang.code }}"
+                {% if lang.code == CURRENT_LANGUAGE %}selected{% endif %}>
+          {{ lang.name_local }} ({{ lang.code }})
+        </option>
+        {% endfor %}
+      </select>
+      <input class="col btn btn-primary" type="submit" value="Go">
+    </div>
+    <div class="row nav list-unstyled">
+    </div>
+  </form>
+</footer>
