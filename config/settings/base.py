@@ -103,4 +103,4 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ADMINS = [('cap sens', 'admin@capsens.eu')]
+ADMINS = []
