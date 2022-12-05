@@ -4,6 +4,7 @@ from returns import result, pointfree, pipeline
 from templated_email import send_templated_mail
 
 from accounts.forms import LegalProfileForm, NaturalProfileForm, SignUpForm
+from accounts.tasks import send_welcome_email_task
 
 
 class UserRegistration():
@@ -43,7 +44,4 @@ class UserRegistration():
 
     @classmethod
     def send_welcome_email(cls, input: dict) -> None:
-        send_templated_mail(template_name='users/welcome',
-                            recipient_list=[input['profile'].email],
-                            from_email=settings.DEFAULT_FROM_EMAIL,
-                            context={})
+        return send_welcome_email_task.delay(to=input['profile'].email)

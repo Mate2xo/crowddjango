@@ -19,7 +19,8 @@ django-storages = "~=1.13.1"
 django-cleanup = "~=6.0.0"
 boto3 = "~=1.26.18"
 gunicorn = "~=20.1.0"
-whitenoise = {extras = ["brotli"], version = "1.0.9"}
+whitenoise = {extras = ["brotli"], version = "~=6.2.0"}
+celery = {extras = ["redis", "pytest"], version = "~=5.2.7"}
 
 [dev-packages]
 coverage = "~=6.5.0"

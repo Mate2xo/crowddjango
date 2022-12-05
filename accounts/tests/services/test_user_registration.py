@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.core import mail
-from django.utils.text import gettext_lazy as _
 import pytest
 
 from accounts.forms import LegalProfileForm, NaturalProfileForm, SignUpForm
@@ -38,11 +37,12 @@ def test_creates_a_profile(user_params, profile_params):
 
 
 @pytest.mark.django_db
-def test_sends_a_welcome_email(user_params, profile_params):
+def test_sends_a_welcome_email(user_params, profile_params, mocker):
+    async_mail = mocker.patch('accounts.tasks.send_welcome_email_task.delay')
+
     UserRegistration.perform(SignUpForm(user_params), NaturalProfileForm(profile_params))
 
-    assert len(mail.outbox) == 1
-    assert mail.outbox[0].subject == _('Welcome to VoyagesPasCher')
+    assert async_mail.assert_called_once() is None
 
 
 class TestWithANaturalProfile:

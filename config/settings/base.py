@@ -10,6 +10,7 @@ import os
 
 from config.env import BASE_DIR, env
 from config.settings.assets import *
+from config.settings.celery import *
 from config.settings.files_and_storages import *
 from config.settings.i18n import *
 

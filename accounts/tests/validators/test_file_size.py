@@ -16,7 +16,6 @@ def tmp_file():
         yield File(file)
 
 
-@pytest.mark.debug
 def test_message_feedback(tmp_file):
     with pytest.raises(ValidationError) as excinfo:
         max_size = 1
