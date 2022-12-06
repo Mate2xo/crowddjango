@@ -3,7 +3,7 @@ from django.conf import settings
 from templated_email import send_templated_mail
 
 
-@shared_task()
+@shared_task(max_retries=3)
 def send_welcome_email_task(to):
     send_templated_mail(
         template_name='users/welcome',
