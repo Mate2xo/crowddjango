@@ -21,6 +21,7 @@ boto3 = "~=1.26.18"
 gunicorn = "~=20.1.0"
 whitenoise = {extras = ["brotli"], version = "~=6.2.0"}
 celery = {extras = ["redis", "pytest"], version = "~=5.2.7"}
+flower = "~=1.2.0"
 
 [dev-packages]
 coverage = "~=6.5.0"
