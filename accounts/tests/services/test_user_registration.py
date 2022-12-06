@@ -38,7 +38,7 @@ def test_creates_a_profile(user_params, profile_params):
 
 @pytest.mark.django_db
 def test_sends_a_welcome_email(user_params, profile_params, mocker):
-    async_mail = mocker.patch('accounts.tasks.send_welcome_email_task.delay')
+    async_mail = mocker.patch('accounts.tasks.send_welcome_email_task.apply_async')
 
     UserRegistration.perform(SignUpForm(user_params), NaturalProfileForm(profile_params))
 
