@@ -25,8 +25,8 @@ DEBUG = False
 ALLOWED_HOSTS = []
 
 # Application definition
-LOCAL_APPS = ['accounts.apps.AccountsConfig', 'investments.apps.InvestmentsConfig']
-THIRD_PARTY_APPS = ['bootstrap5', 'django_extensions', 'djmoney', 'polymorphic']
+LOCAL_APPS = ['accounts', 'investments', 'tasks']
+THIRD_PARTY_APPS = ['bootstrap5', 'django_extensions', 'djmoney', 'polymorphic', 'django_celery_beat']
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.admin',
