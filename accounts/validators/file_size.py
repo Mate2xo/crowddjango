@@ -1,8 +1,9 @@
-from django.core.validators import ValidationError
+from django.core.validators import ValidationError, deconstructible
 from django.db.models.fields.files import FieldFile
 from django.utils.translation import gettext as _
 
 
+@deconstructible
 class FileSizeValidator:
     message = _("This file is {file_size} bytes, but cannot be larger than {max_size} bytes")
 
@@ -21,3 +22,6 @@ class FileSizeValidator:
                                       'file_size': file.size
                                   }
                                   )
+
+    def __eq__(self, other):
+        return self.max_size == other.max_size
